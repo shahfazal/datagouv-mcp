@@ -242,7 +242,7 @@ Docker is required for the recommended setup. Install it via [Docker Desktop](ht
 docker compose up -d
 
 # With custom environment variables
-MCP_PORT=8007 DATAGOUV_ENV=demo docker compose up -d
+MCP_PORT=8007 DATAGOUV_API_ENV=demo docker compose up -d
 
 # Stop
 docker compose down
@@ -251,7 +251,7 @@ docker compose down
 **Environment variables:**
 - `MCP_HOST`: host to bind to (defaults to `0.0.0.0`). Set to `127.0.0.1` for local development to follow MCP security best practices.
 - `MCP_PORT`: port for the MCP HTTP server (defaults to `8000` when unset).
-- `DATAGOUV_ENV`: `prod` (default) or `demo`. This controls which data.gouv.fr environement it uses the data from (https://www.data.gouv.fr or https://demo.data.gouv.fr). By default the MCP server talks to the production data.gouv.fr. Set `DATAGOUV_ENV=demo` if you specifically need the demo environment.
+- `DATAGOUV_API_ENV`: `prod` (default) or `demo`. This controls which data.gouv.fr environement it uses the data from (https://www.data.gouv.fr or https://demo.data.gouv.fr). By default the MCP server talks to the production data.gouv.fr. Set `DATAGOUV_API_ENV=demo` if you specifically need the demo environment.
 
 #### ⚙️ Manual Installation
 
@@ -273,7 +273,7 @@ You will need [uv](https://github.com/astral-sh/uv) to install dependencies and 
   ```
   MCP_HOST=127.0.0.1  # (defaults to 0.0.0.0, use 127.0.0.1 for local dev)
   MCP_PORT=8007  # (defaults to 8000 when unset)
-  DATAGOUV_ENV=prod  # Allowed values: demo | prod (defaults to prod when unset)
+  DATAGOUV_API_ENV=prod  # Allowed values: demo | prod (defaults to prod when unset)
   ```
 
   Load the variables with your preferred method, e.g.:
@@ -360,7 +360,7 @@ The MCP server provides tools to interact with data.gouv.fr datasets and dataser
 
   Parameters: `dataset_id` (optional), `resource_id` (optional), `limit` (optional, default: 12, max: 100)
 
-  Returns monthly statistics including visits and downloads, sorted by month in descending order (most recent first). At least one of `dataset_id` or `resource_id` must be provided. **Note:** This tool only works with the production environment (`DATAGOUV_ENV=prod`). The Metrics API does not have a demo/preprod environment.
+  Returns monthly statistics including visits and downloads, sorted by month in descending order (most recent first). At least one of `dataset_id` or `resource_id` must be provided. **Note:** This tool only works with the production environment (`DATAGOUV_API_ENV=prod`). The Metrics API does not have a demo/preprod environment.
 
 ## 🧪 Tests
 
@@ -382,7 +382,7 @@ uv run pytest tests/test_tabular_api.py
 RESOURCE_ID=3b6b2281-b9d9-4959-ae9d-c2c166dff118 uv run pytest tests/test_tabular_api.py
 
 # Run with prod environment
-DATAGOUV_ENV=prod uv run pytest
+DATAGOUV_API_ENV=prod uv run pytest
 ```
 
 ### 🔍 Interactive Testing with MCP Inspector
