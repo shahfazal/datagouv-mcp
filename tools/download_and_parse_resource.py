@@ -13,7 +13,7 @@ from helpers import datagouv_api_client
 
 logger = logging.getLogger("datagouv_mcp")
 
-MAX_DOWNLOAD_SIZE_MB: int = 50
+MAX_DOWNLOAD_SIZE_MB: int = 50  # TODO: make this as a environment variable
 MAX_ROWS_HARD_LIMIT: int = 500
 
 
