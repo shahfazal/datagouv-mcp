@@ -1,4 +1,3 @@
-# conftest.py
 import ast
 import logging
 import pytest
